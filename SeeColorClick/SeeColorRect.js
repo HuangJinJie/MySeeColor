@@ -21,11 +21,11 @@
         
         if(type < 9){
             type++;
-            this.setRectType(type);
         }else{
-            type = 1;
-            this.setRectType(type);
+            type = 0;
         }
+
+        this.setRectType(type);
     }
 
     this.setColor = function (colorString) {
