@@ -49,6 +49,7 @@ function addRect(){
 
     var color = '#000000';
     var Rectcolor = '#ffffff';
+    var colors = ['#000000','#ffffff','#ff0000','#ff7f00','#ffff00','#00ff00','#00ffff','#0000ff','#8b00ff']; //增填红橙色黄绿青蓝紫的颜色数组
     var x = parseInt(Math.random() * (n - 1));     //x与y的取值，是在一个数学二维坐标系的可行域，即y的取值收x的大小所限制y<=2*x-1
     var y = parseInt(Math.random() * (2*x));
     // for(var indexX = 0; indexX < n; indexX++){
@@ -74,7 +75,7 @@ function addRect(){
     	type[indexX] = new Array();
         for(var indexY = 0; indexY < (2 * indexX + 1); indexY++){
 
-            var r = new SeeColorRect(n, color,Rectcolor,indexY);
+            var r = new SeeColorRect(n, colors,indexY);
             type[indexX][indexY] = r;
             gameView.addChild(r);
 
