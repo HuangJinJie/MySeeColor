@@ -16,6 +16,31 @@ function startGame(){
     addRect();
 }
 
+function submit(){
+    var input =  document.getElementById("inputnum");
+    var num = input.value;
+
+    if(num == undefined || num == null || isNaN(num) || isNull(num)){
+        alert('请输入数字');
+        input.value = '';
+        input.placeholder = '请输入大三角形边上的小三角形个数,上次输入的值为'+n;
+    }else{
+        n = num;
+        input.value = '';
+        input.placeholder = '本次输入的值为'+num+',可再次输入数值改变三角形个数';
+    }
+
+    gameView.removeAllChildren();
+    addRect();
+}
+
+
+function isNull( str ){
+    if ( str == "" ) return true;
+    var regu = "^[ ]+$";
+    var re = new RegExp(regu);
+    return re.test(str);
+}
 
 
 function addRect(){
@@ -67,7 +92,7 @@ function addRect(){
             r.addEventListener("click",function change(event){     //此处根据event函数的回调参数来判断点击的小三角形位于大三角形坐标的哪一行哪一列
 
             	var row = parseInt(event.stageY / (getSize()/n));              //得到行数
-            
+
             	var column = parseInt((event.stageX - (getSize()-(getSize() / n) *(row + 1))/2) / (getSize()/(2*n)));//得到列数,可以根据这时候得到的column判断该小三角形所在的列可能为n-1或者为n，需进一步判断
 
             	var dx,dy;                           //分别用于记录横纵坐标对于指定单元标准点（单元点位getSize()/(2*n)）的距离差
@@ -87,12 +112,12 @@ function addRect(){
             			column = column - 1;
             		}
             		console.log('右');
-            	    console.log('row='+row+',column='+column); 
-            	}
+                 console.log('row='+row+',column='+column); 
+             }
 
-            	type[row][column].changeType();
-            	
-            });
+             type[row][column].changeType();
+
+         });
         }
 
     }
